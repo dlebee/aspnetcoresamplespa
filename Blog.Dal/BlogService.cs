@@ -12,6 +12,7 @@ namespace Blog.Dal
     {
         public Task<IEnumerable<Blog>> GetBlogsAsync(int page, int pageSize, CancellationToken cancellationToken = default(CancellationToken))
         {
+            // this is for production.
             var faker = new Bogus.Faker<Blog>();
             faker.RuleFor(t => t.Id, () => Guid.NewGuid());
             faker.RuleFor(t => t.Author, t => t.Person.FullName);
